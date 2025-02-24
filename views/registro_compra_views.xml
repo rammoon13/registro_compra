@@ -1,0 +1,57 @@
+<!-- registro_compra/views/registro_compra_views.xml-->
+<odoo>
+    <!-- Vista Formulario -->
+    <record id="view_registro_compra_form" model="ir.ui.view">
+        <field name="name">registro.compra.form</field>
+        <field name="model">registro.compra</field>
+        <field name="arch" type="xml">
+            <form string="Registro de Compra">
+                <sheet>
+                    <group>
+                        <field name="vendedor" widget="many2one"/>
+                        <field name="empresa" widget="many2one" domain="[('is_company', '=', True)]"/>
+                        <field name="fecha_venta"/>
+                    </group>
+                    <group>
+                        <field name="linea_ids">
+                            <tree editable="bottom">
+                                <field name="producto" widget="many2one"/>
+                                <field name="cantidad"/>
+                                <field name="precio_unitario" readonly="1"/>
+                                <field name="subtotal" readonly="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="total" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Árbol -->
+    <record id="view_registro_compra_tree" model="ir.ui.view">
+        <field name="name">registro.compra.tree</field>
+        <field name="model">registro.compra</field>
+        <field name="arch" type="xml">
+            <tree string="Registros de Compra">
+                <field name="vendedor"/>
+                <field name="empresa"/>
+                <field name="fecha_venta"/>
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción de ventana -->
+    <record id="action_registro_compra" model="ir.actions.act_window">
+        <field name="name">Registros de Compra</field>
+        <field name="res_model">registro.compra</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menús -->
+    <menuitem id="menu_registro_compra_root" name="Registro de Compra" sequence="10"/>
+    <menuitem id="menu_registro_compra" name="Registros" parent="menu_registro_compra_root" action="action_registro_compra" sequence="10"/>
+</odoo>
