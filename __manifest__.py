@@ -8,7 +8,7 @@
     'website': 'https://tuweb.com',
     'license': 'LGPL-3',
     'depends': ['base', 'hr', 'product'],
-    'icon': '/registro_compra/static/description/icon.png',
+    'icon': '/registro_compra/static/description/icon2.png',
     'data': [
         'security/ir.model.access.csv',
         'views/registro_compra_views.xml',
